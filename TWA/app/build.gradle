@@ -20,7 +20,7 @@ apply plugin: 'com.android.application'
 
 def twaManifest = [
     applicationId: 'hannepps.tools.passwordchecker',
-    hostName: 'hannesgith.github.io/PW', // The domain being opened in the TWA.
+    hostName: 'hannesgith.github.io/password-check', // The domain being opened in the TWA.
     launchUrl: '/', // The start path for the TWA. Must be relative to the domain.
     name: 'Password Checker', // The name shown on the Android Launcher.
     themeColor: '#222424', // The color used for the status bar.
