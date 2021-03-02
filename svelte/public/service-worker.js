@@ -6,10 +6,10 @@ const CACHE_NAME = 'static-cache-v1';
 // Add list of files to cache here.
 const FILES_TO_CACHE = [
   'index.html',
-  './svelte/public/build/bundle.css',
-  './svelte/public/build/bundle.js',
-  './svelte/public/build/bundle.js.map',
-  './svelte/public/global.css',
+  './build/bundle.css',
+  './build/bundle.js',
+  './build/bundle.js.map',
+  './global.css',
 ];
 
 self.addEventListener('install', (evt) => {
