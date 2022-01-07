@@ -3,7 +3,7 @@
 	import PWBar from './pw.svelte'
 	import Tries from './tries.svelte'
 	import {elapsed} from './store'
-	import {color, seconds, security} from './pw_store'
+	import {color, color_easy, seconds, security} from './pw_store'
 	import { slide } from 'svelte/transition';
 
 	let hasFootNote:Boolean = true;
@@ -17,14 +17,14 @@
 	{#if $elapsed>$seconds }<p mini transition:slide="{{ duration: 1000 }}" >(thats shorter than you've been here)</p> {/if}
 </main>
 {#if hasFootNote}
-<p mini style="padding: 0 10%;">
+<div mini style="padding: 0 10%;">
 	* <br>
-	If using a normal PC trying around 10000000000 passwords per second. <br>
+	If using a normal PC trying around {Number(10000000000).toLocaleString()} passwords per second. <br>
 	On an online-service it would probably take like 
-	<strong>{$security.crack_times_display.online_no_throttling_10_per_second}</strong>
+	<div id="securityText" style="color: #{$color_easy}"> {$security.crack_times_display.online_no_throttling_10_per_second.toUpperCase()}</div>
 	
 
-</p>
+</div>
 {/if}
 
 <Tries></Tries>
@@ -40,7 +40,14 @@
 		border-radius: 2em;
 		transition: background-color 0.8s ease;
 	}
-	p[mini]{
+
+	#securityText{
+    font-weight: 700;
+    font-size: larger;
+    text-transform: uppercase;
+}
+
+	[mini]{
 		font-size: 11px;
 	}
 
