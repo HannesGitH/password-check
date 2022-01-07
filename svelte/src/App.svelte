@@ -17,7 +17,7 @@
 	{#if $elapsed>$seconds }<p mini transition:slide="{{ duration: 1000 }}" >(thats shorter than you've been here)</p> {/if}
 </main>
 {#if hasFootNote}
-<p mini style="padding: 0 10em;">
+<p mini style="padding: 0 10%;">
 	* <br>
 	If using a normal PC trying around 10000000000 passwords per second. <br>
 	On an online-service it would probably take like 
@@ -32,8 +32,9 @@
 <style>
 	main {
 		text-align: center;
-		padding: 2em;
-		margin: 1em ;
+		padding: 5%;
+		margin: 5% ;
+		margin-bottom: 2%;
 		color: white;
 		border-radius: 2em;
 		transition: background-color 0.8s ease;
