@@ -10,7 +10,7 @@
 <MediaQuery query="(min-height: 30em)" let:matches>
 	{#if matches}
 	<div id="main"> 
-        for an otherwise unprotected offline scenario that's {scoreStrings[$harderScore]}, a hacker would {scoreStrings2[$harderScore]} an avarage of {$security.guesses.toLocaleString()} tries. <br>
+        For an otherwise unprotected offline scenario that's {scoreStrings[$harderScore]}, a hacker would {scoreStrings2[$harderScore]} an avarage of {$security.guesses.toLocaleString()} tries. <br>
         In a real-world scenario though, this password would {scoreStrings[$harderScore]==scoreStrings[$security.score] ? 'still' : ''} be  
         <span id="securityText" style="color: #{$color_easy}">{scoreStrings[$security.score]}</span>
     

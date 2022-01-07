@@ -16,7 +16,7 @@ export const seconds = derived(
 
 export const harderScore = derived(
     security,
-	$security=>Math.min(Math.round($security.guesses_log10/4),5)
+	$security=>Math.min(Math.floor($security.guesses_log10/4),5)
 );
 
 const getColorFor = (input:number)=>{
