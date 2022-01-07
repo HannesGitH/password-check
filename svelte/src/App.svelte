@@ -31,6 +31,7 @@
 
 <style>
 	main {
+		/* text-shadow: 0px 1px 0px #000000; */
 		text-align: center;
 		padding: 5%;
 		margin: 5% ;
