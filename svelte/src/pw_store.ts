@@ -14,15 +14,27 @@ export const seconds = derived(
 	$security=>$security.crack_times_seconds.offline_fast_hashing_1e10_per_second
 );
 
+export const harderScore = derived(
+    security,
+	$security=>Math.min(Math.round($security.guesses_log10/4),5)
+);
+
+const getColorFor = (input:number)=>{
+    const green = "00FF00" 
+    const red   = "FF0000" 
+    let ratio = between(0,input,1);
+    let color = getColorMix(green, red, ratio);
+    return color
+}
+
 export const color = derived(
     seconds,
-	($seconds)=> {
-        const green = "00FF00" 
-        const red   = "FF0000" 
-        let ratio = between(0,Math.log10(Math.log10($seconds)),1);
-        let color = getColorMix(green, red, ratio);
-        return color
-    }
+	$seconds=> getColorFor(Math.log10(Math.log10($seconds)))
+);
+
+export const color_easy = derived(
+    security,
+	$security=> getColorFor($security.guesses_log10/12)
 );
 
 const between=(min:number,x:number,max:number)=>

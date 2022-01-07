@@ -1,36 +1,29 @@
 <script  lang="ts" >
-    import {security} from './pw_store'
+    import {security, harderScore, color_easy} from './pw_store'
 
-    // function getNumberParts(x)
-    // {
-    //     var float = new Float64Array(1),
-    //         bytes = new Uint8Array(float.buffer);
-
-    //     float[0] = x;
-
-    //     var sign = bytes[7] >> 7,
-    //         exponent = ((bytes[7] & 0x7f) << 4 | bytes[6] >> 4) - 0x3ff;
-
-    //     bytes[7] = 0x3f;
-    //     bytes[6] |= 0xf0;
-
-    //     return {
-    //         sign: sign,
-    //         exponent: exponent,
-    //         mantissa: float[0],
-    //     }
-    // }
+    const scoreStrings = ['unuseably bad','kinda bad', 'okayish', 'safe', 'rediculously secure']
+    const scoreStrings2 = ['laugh at','only need', 'need', 'baffle at', 'die before trying']
 </script>
 
-<div>
-	<p>that's an avarage of {$security.guesses} tries</p>
+<div id="main"> 
+        for an otherwise unprotected offline scenario that's {scoreStrings[$harderScore]}, a hacker would {scoreStrings2[$harderScore]} an avarage of {$security.guesses} tries. <br>
+        In a real-world scenario though, this password would {scoreStrings[$harderScore]==scoreStrings[$security.score] ? 'still' : ''} be  
+        <span id="securityText" style="color: #{$color_easy}">{scoreStrings[$security.score]}</span>
+    
 </div>
 
 <style>
-div {
+#main {
+    font-weight: 200;
     padding-top: 5%;
  margin: auto;
  width: 80%;
  text-align: center;
+}
+
+#securityText{
+    font-weight: 700;
+    font-size: larger;
+    text-transform: uppercase;
 }
 </style>
