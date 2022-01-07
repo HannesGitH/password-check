@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let name: string;
 	import PWBar from './pw.svelte'
+	import Tries from './tries.svelte'
 	import {elapsed} from './store'
 	import {color, seconds, security} from './pw_store'
 	import { slide } from 'svelte/transition';
@@ -17,10 +18,16 @@
 </main>
 {#if hasFootNote}
 <p mini style="padding: 0 10em;">
-	* if using a normal PC trying around 10000000000 passwords per second. On an online-service it would probably take like {$security.crack_times_display.online_no_throttling_10_per_second}
+	* <br>
+	If using a normal PC trying around 10000000000 passwords per second. <br>
+	On an online-service it would probably take like 
+	<strong>{$security.crack_times_display.online_no_throttling_10_per_second}</strong>
+	
 
 </p>
 {/if}
+
+<Tries></Tries>
 
 <style>
 	main {
