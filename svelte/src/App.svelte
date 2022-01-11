@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let name: string;
+	export let title: string;
 	import PWBar from './pw.svelte'
 	import Tries from './tries.svelte'
 	import {elapsed} from './store'

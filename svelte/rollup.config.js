@@ -6,6 +6,10 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
+import html from "@rollup/plugin-html"
+import fs from "fs";
+
+require("svelte/register");
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -30,6 +34,24 @@ function serve() {
 	};
 }
 
+function makeTemplate(templateData, svelteComponent) {
+	return ({ attributes, bundle, files, publicPath, title }) => {
+	  const scripts = Object.entries(bundle)
+		.filter(([key, value]) => value.isEntry && key.endsWith(".js"))
+		.map(([key, value]) => `<script defer src="/${key}"></script>`)
+		.join();
+  
+	  const body = svelteComponent.render({}).html;
+  
+	  return templateData
+		.replace("%%NOSCRIPT_BODY%%", body)
+		.replace("%%TITLE%%", title)
+		.replace("%%SCRIPTS%%", scripts);
+	};
+  }
+  
+
+
 export default {
 	input: 'src/main.ts',
 	output: {
@@ -44,8 +66,19 @@ export default {
 			compilerOptions: {
 				// enable run-time checks when not in production
 				dev: !production
-			}
+			},
+			hydratable: true,
 		}),
+
+		html({
+			fileName: "index.html",
+			title: "Password Checker",
+			template: makeTemplate(
+			  fs.readFileSync("./index.template.html", "utf8"),
+			  require("./src/App.svelte").default
+			),
+		  }),
+
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
