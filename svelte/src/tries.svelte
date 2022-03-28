@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let usesOldFootNote: Boolean = false;
+  export let thisIsTheFootNote: Boolean = false;
 
   import MediaQuery from "./MediaQuery.svelte";
 
@@ -26,9 +26,17 @@
 <MediaQuery query="(min-height: 30em)" let:matches>
   {#if matches}
     <div id="main">
-      For an otherwise unprotected offline scenario that's {scoreStrings[
+      <!-- {#if thisIsTheFootNote}
+        * <br />
+      {/if} -->
+      For an otherwise unprotected offline scenario
+      <!-- {#if thisIsTheFootNote}
+        ( = a normal PC trying around {Number(10000000000).toLocaleString()} passwords
+        per second)
+      {/if} -->
+      that's {scoreStrings[$harderScore]}, a hacker would {scoreStrings2[
         $harderScore
-      ]}, a hacker would {scoreStrings2[$harderScore]} an avarage of
+      ]} an avarage of
       <strong>{$security.guesses.toLocaleString()} tries</strong>. <br />
       In a real-world scenario though, this password would {scoreStrings[
         $harderScore

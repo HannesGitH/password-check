@@ -7,7 +7,7 @@
   import { slide } from "svelte/transition";
 
   let hasFootNote: Boolean = true;
-  let usesOldFootNote: Boolean = false;
+  let usesOldFootNote: Boolean = true;
 </script>
 
 <main style="background-color: #{$color};">
@@ -30,7 +30,7 @@
   </div>
 {/if}
 
-<Tries />
+<Tries thisIsTheFootNote={hasFootNote && !usesOldFootNote}/>
 
 <style>
   main {
