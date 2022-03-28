@@ -1172,7 +1172,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
-    			t0 = text("For an otherwise unprotected offline scenario that's ");
+    			t0 = text("For an otherwise unprotected offline scenario\n      \n      that's ");
     			t1 = text(t1_value);
     			t2 = text(", a hacker would ");
     			t3 = text(t3_value);
@@ -1187,15 +1187,15 @@ var app = (function () {
     			t10 = text(" be\n      ");
     			span = element("span");
     			t11 = text(t11_value);
-    			add_location(strong, file$1, 27, 6, 720);
-    			add_location(br, file$1, 27, 67, 781);
+    			add_location(strong, file$1, 35, 6, 954);
+    			add_location(br, file$1, 35, 67, 1015);
     			attr_dev(span, "id", "securityText");
     			set_style(span, "color", "#" + /*$color_easy*/ ctx[2]);
     			attr_dev(span, "class", "svelte-ekokg1");
-    			add_location(span, file$1, 33, 6, 965);
+    			add_location(span, file$1, 41, 6, 1199);
     			attr_dev(div, "id", "main");
     			attr_dev(div, "class", "svelte-ekokg1");
-    			add_location(div, file$1, 23, 4, 534);
+    			add_location(div, file$1, 23, 4, 536);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1367,7 +1367,7 @@ var app = (function () {
     	component_subscribe($$self, color_easy, $$value => $$invalidate(2, $color_easy = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Tries", slots, []);
-    	let { usesOldFootNote = false } = $$props;
+    	let { thisIsTheFootNote = false } = $$props;
 
     	const scoreStrings = [
     		"unthinkably bad",
@@ -1387,18 +1387,18 @@ var app = (function () {
     		"be stupid to even try to tackle"
     	];
 
-    	const writable_props = ["usesOldFootNote"];
+    	const writable_props = ["thisIsTheFootNote"];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Tries> was created with unknown prop '${key}'`);
     	});
 
     	$$self.$$set = $$props => {
-    		if ("usesOldFootNote" in $$props) $$invalidate(5, usesOldFootNote = $$props.usesOldFootNote);
+    		if ("thisIsTheFootNote" in $$props) $$invalidate(5, thisIsTheFootNote = $$props.thisIsTheFootNote);
     	};
 
     	$$self.$capture_state = () => ({
-    		usesOldFootNote,
+    		thisIsTheFootNote,
     		MediaQuery,
     		security,
     		harderScore,
@@ -1411,7 +1411,7 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("usesOldFootNote" in $$props) $$invalidate(5, usesOldFootNote = $$props.usesOldFootNote);
+    		if ("thisIsTheFootNote" in $$props) $$invalidate(5, thisIsTheFootNote = $$props.thisIsTheFootNote);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -1424,14 +1424,14 @@ var app = (function () {
     		$color_easy,
     		scoreStrings,
     		scoreStrings2,
-    		usesOldFootNote
+    		thisIsTheFootNote
     	];
     }
 
     class Tries extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$2, create_fragment$2, safe_not_equal, { usesOldFootNote: 5 });
+    		init(this, options, instance$2, create_fragment$2, safe_not_equal, { thisIsTheFootNote: 5 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -1441,11 +1441,11 @@ var app = (function () {
     		});
     	}
 
-    	get usesOldFootNote() {
+    	get thisIsTheFootNote() {
     		throw new Error("<Tries>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set usesOldFootNote(value) {
+    	set thisIsTheFootNote(value) {
     		throw new Error("<Tries>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -1507,7 +1507,7 @@ var app = (function () {
     			p.textContent = "(thats shorter than you've been here)";
     			attr_dev(p, "mini", "");
     			attr_dev(p, "class", "svelte-c65jqb");
-    			add_location(p, file$2, 13, 27, 440);
+    			add_location(p, file$2, 13, 27, 439);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1572,16 +1572,16 @@ var app = (function () {
     			t4 = text("\n    On an online-service it would probably take like\n    ");
     			div0 = element("div");
     			t5 = text(t5_value);
-    			add_location(br0, file$2, 20, 6, 636);
-    			add_location(br1, file$2, 22, 16, 747);
+    			add_location(br0, file$2, 20, 6, 635);
+    			add_location(br1, file$2, 22, 16, 746);
     			attr_dev(div0, "id", "securityText");
     			set_style(div0, "color", "#" + /*$color_easy*/ ctx[4]);
     			attr_dev(div0, "class", "svelte-c65jqb");
-    			add_location(div0, file$2, 24, 4, 811);
+    			add_location(div0, file$2, 24, 4, 810);
     			attr_dev(div1, "mini", "");
     			set_style(div1, "padding", "0 10%");
     			attr_dev(div1, "class", "svelte-c65jqb");
-    			add_location(div1, file$2, 19, 2, 595);
+    			add_location(div1, file$2, 19, 2, 594);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -1637,7 +1637,13 @@ var app = (function () {
 
     	let if_block0 = /*$elapsed*/ ctx[2] > /*$seconds*/ ctx[3] && create_if_block_1(ctx);
     	let if_block1 = /*hasFootNote*/ ctx[6] && /*usesOldFootNote*/ ctx[7] && create_if_block$1(ctx);
-    	tries = new Tries({ $$inline: true });
+
+    	tries = new Tries({
+    			props: {
+    				thisIsTheFootNote: /*hasFootNote*/ ctx[6] && !/*usesOldFootNote*/ ctx[7]
+    			},
+    			$$inline: true
+    		});
 
     	const block = {
     		c: function create() {
@@ -1653,10 +1659,10 @@ var app = (function () {
     			t4 = space();
     			create_component(tries.$$.fragment);
     			attr_dev(h1, "class", "svelte-c65jqb");
-    			add_location(h1, file$2, 11, 2, 359);
+    			add_location(h1, file$2, 11, 2, 358);
     			set_style(main, "background-color", "#" + /*$color*/ ctx[1]);
     			attr_dev(main, "class", "svelte-c65jqb");
-    			add_location(main, file$2, 10, 0, 313);
+    			add_location(main, file$2, 10, 0, 312);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1760,7 +1766,7 @@ var app = (function () {
     	validate_slots("App", slots, []);
     	let { name } = $$props;
     	let hasFootNote = true;
-    	let usesOldFootNote = false;
+    	let usesOldFootNote = true;
     	const writable_props = ["name"];
 
     	Object.keys($$props).forEach(key => {
