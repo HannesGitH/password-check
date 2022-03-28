@@ -3,8 +3,8 @@
 
     import {security, harderScore, color_easy} from './pw_store'
 
-    const scoreStrings = ['unthinkably bad','bad', 'okayish', 'safe', 'rediculously secure']
-    const scoreStrings2 = ['laugh at','only need', 'need', 'baffle at', 'die before trying']
+    const scoreStrings = ['unthinkably bad','bad', 'okayish', 'safe', 'rediculously secure','uncrackable']
+    const scoreStrings2 = ['laugh at','only need', 'need', 'baffle at','cry since he faces', 'be stupid to even try to tackle']
 </script>
 
 <MediaQuery query="(min-height: 30em)" let:matches>
