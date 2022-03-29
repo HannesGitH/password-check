@@ -23,20 +23,12 @@
   ];
 </script>
 
-<MediaQuery query="(min-height: 30em)" let:matches>
-  {#if matches}
-    <div id="main">
-      <!-- {#if thisIsTheFootNote}
-        * <br />
-      {/if} -->
-      For an otherwise unprotected offline scenario
-      <!-- {#if thisIsTheFootNote}
-        ( = a normal PC trying around {Number(10000000000).toLocaleString()} passwords
-        per second)
-      {/if} -->
-      that's {scoreStrings[$harderScore]}, a hacker would {scoreStrings2[
+<MediaQuery query="(min-height: 30em) and (min-width: 20em)" let:matches>
+  <div id="main" class={matches ? "footer" : "normal"}>
+    {#if !thisIsTheFootNote}
+      For an otherwise unprotected offline scenario that's {scoreStrings[
         $harderScore
-      ]} an avarage of
+      ]}, a hacker would {scoreStrings2[$harderScore]} an avarage of
       <strong>{$security.guesses.toLocaleString()} tries</strong>. <br />
       In a real-world scenario though, this password would {scoreStrings[
         $harderScore
@@ -46,8 +38,32 @@
       <span id="securityText" style="color: #{$color_easy}"
         >{scoreStrings[$security.score]}</span
       >
-    </div>
-  {/if}
+    {:else}
+      * <br />
+      <small>
+        Thats assuming an otherwise unprotected offline scenario, where a hacker
+        would try around {Number(10000000000).toLocaleString()} passwords per second
+        on a normal consumer-grade PC.
+      </small> <br /><br />
+      Your password would be {scoreStrings[$harderScore]}, a hacker would {scoreStrings2[
+        $harderScore
+      ]} an avarage of
+      <span id="tries"> {$security.guesses.toLocaleString()} </span><strong
+        >tries</strong
+      >. <br />
+      In a more real-world scenario (like online services) though, this password
+      would {scoreStrings[$harderScore] == scoreStrings[$security.score]
+        ? "still"
+        : ""} be
+      <span id="securityText" style="color: #{$color_easy}"
+        >{scoreStrings[$security.score]}</span
+      >
+      and take
+      <span id="securityText" style="color: #{$color_easy}"
+        >{$security.crack_times_display.online_no_throttling_10_per_second.toUpperCase()}</span
+      > to crack.
+    {/if}
+  </div>
 </MediaQuery>
 
 <style>
@@ -55,6 +71,9 @@
     font-weight: 200;
     font-size: small;
     padding: 5%;
+  }
+
+  #main.footer {
     position: fixed;
     bottom: 0;
   }
@@ -63,5 +82,10 @@
     font-weight: 700;
     font-size: larger;
     text-transform: uppercase;
+  }
+
+  #tries {
+    font-weight: 700;
+    font-size: larger;
   }
 </style>

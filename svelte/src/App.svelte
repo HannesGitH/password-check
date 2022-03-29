@@ -7,7 +7,7 @@
   import { slide } from "svelte/transition";
 
   let hasFootNote: Boolean = true;
-  let usesOldFootNote: Boolean = true;
+  let usesOldFootNote: Boolean = false;
 </script>
 
 <main style="background-color: #{$color};">
