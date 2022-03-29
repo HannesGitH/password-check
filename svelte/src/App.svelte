@@ -56,8 +56,9 @@
 
   h1 {
     text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 200;
+    font-size: 3em;
+	font-weight: lighter;
+    /* font-weight: thin; */
   }
 
   @media (max-width: 740px) {
@@ -66,6 +67,7 @@
     }
     h1 {
       font-size: 1.5em;
+	  font-weight: normal;
     }
   }
 </style>

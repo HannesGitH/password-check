@@ -7,7 +7,7 @@
 
 <p>
   it takes
-  <b style="text-transform: uppercase;">
+  <b>
     {$security.crack_times_display.offline_fast_hashing_1e10_per_second}
   </b>
   to break your password {withAsterix ? "*" : ""}
@@ -22,5 +22,11 @@
     border: none;
   }
   input:focus {
+  }
+
+  b{
+    font-size: large;
+    font-weight: bolder;
+    text-transform: uppercase;
   }
 </style>
