@@ -12,7 +12,7 @@
 <main 
 	style="background-color: #{$color};"
 >
-	<h1>{name}</h1>
+	<h1>{title}</h1>
 	<PWBar withAsterix={hasFootNote}/>
 	{#if $elapsed>$seconds }<p mini transition:slide="{{ duration: 1000 }}" >(thats shorter than you've been here)</p> {/if}
 </main>

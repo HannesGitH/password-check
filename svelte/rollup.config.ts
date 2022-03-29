@@ -67,7 +67,7 @@ export default {
 				// enable run-time checks when not in production
 				dev: !production
 			},
-			hydratable: true,
+			// hydratable: true,
 		}),
 
 		html({
