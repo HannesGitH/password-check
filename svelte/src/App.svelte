@@ -91,6 +91,7 @@
   #wrapper {
     display: flex;
     flex-direction: column;
+    ;
     justify-content: space-between;
     align-items: center;
     position: absolute;
@@ -98,7 +99,7 @@
     left: 0;
     margin: 5%;
     width: 90%;
-    height: 90%;
+    min-height: 90%;
     > .inner:not(#tries) {
       width: 100%;
       height: 100%;
