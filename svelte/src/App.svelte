@@ -82,6 +82,10 @@
       width: 100%;
       height: 100%;
     }
+    > .inner#tries {
+      width: 100%;
+    }
+    
   }
 
   @media (max-width: 740px) {
