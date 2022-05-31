@@ -8,7 +8,12 @@ export const security = derived(password, ($password: String) =>
   zxcvbn($password)
 );
 
-export const hidden : Writable<boolean> = writable(true);
+export const hidden: Writable<boolean> = writable(true);
+
+export const is_empty = derived(
+  password,
+  ($password: String) => $password.length < 1
+);
 
 export const seconds = derived(
   security,
@@ -28,8 +33,8 @@ const getColorFor = (input: number) => {
   return color;
 };
 
-export const color = derived(seconds, ($seconds) =>
-  getColorFor(Math.log10(Math.log10($seconds)))
+export const color = derived([seconds,is_empty], ([$seconds, $is_empty]) =>
+  $is_empty ? "323535" : getColorFor(Math.log10(Math.log10($seconds)))
 );
 
 export const color_easy = derived(security, ($security) =>

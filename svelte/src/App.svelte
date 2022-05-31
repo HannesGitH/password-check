@@ -1,11 +1,13 @@
 <script lang="ts">
   export let name: string;
-  import PWBar from "./pw.svelte";
+  import PWBar from "./pw_input.svelte";
+  import PWTime from "./pw_time.svelte";
   import Tries from "./tries.svelte";
   import Warn from "./warn.svelte";
   import { elapsed } from "./store";
   import { color, color_easy, seconds, security } from "./pw_store";
   import { slide } from "svelte/transition";
+  import { is_empty } from "./pw_store";
 
   let hasFootNote: Boolean = true;
   let usesOldFootNote: Boolean = false;
@@ -15,29 +17,41 @@
   <div class="inner">
     <main style="background-color: #{$color};">
       <h1>{name}</h1>
-      <PWBar withAsterix={hasFootNote} />
-      {#if $elapsed > $seconds}<p mini transition:slide={{ duration: 1000 }}>
-          (thats shorter than you've been here)
-        </p>
+      <PWBar />
+      {#if !$is_empty}
+        <div transition:slide={{ duration: 100 }} style="height: 3em;">
+          <PWTime withAsterix={hasFootNote} />
+          {#if $elapsed > $seconds}<p
+              mini
+              transition:slide={{ duration: 500, delay: 100}}
+            >
+              (thats shorter than you've been here)
+            </p>
+          {/if}
+        </div>
       {/if}
     </main>
-    {#if hasFootNote && usesOldFootNote}
-      <div mini style="padding: 0 10%;">
-        * <br />
-        If using a normal PC trying around {Number(
-          10000000000
-        ).toLocaleString()} passwords per second. <br />
-        On an online-service it would probably take like
-        <div id="securityText" style="color: #{$color_easy}">
-          {$security.crack_times_display.online_no_throttling_10_per_second.toUpperCase()}
+    {#if !$is_empty}
+      {#if hasFootNote && usesOldFootNote}
+        <div mini style="padding: 0 10%;">
+          * <br />
+          If using a normal PC trying around {Number(
+            10000000000
+          ).toLocaleString()} passwords per second. <br />
+          On an online-service it would probably take like
+          <div id="securityText" style="color: #{$color_easy}">
+            {$security.crack_times_display.online_no_throttling_10_per_second.toUpperCase()}
+          </div>
         </div>
-      </div>
+      {/if}
+      <div id="warn"><Warn /></div>
     {/if}
-  <div id="warn"><Warn/></div>
   </div>
-  <div class="inner" id="tries">
-    <Tries thisIsTheFootNote={hasFootNote && !usesOldFootNote} />
-  </div>
+  {#if !$is_empty}
+    <div class="inner" id="tries" transition:slide={{ duration: 500 }}>
+      <Tries thisIsTheFootNote={hasFootNote && !usesOldFootNote} />
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">
@@ -52,7 +66,7 @@
     border-radius: 2em;
     transition: background-color 0.8s ease;
   }
-  #warn{
+  #warn {
     margin: 1em 0;
     font-size: 0.8em;
   }
@@ -92,7 +106,6 @@
     > .inner#tries {
       width: 100%;
     }
-    
   }
 
   @media (max-width: 740px) {

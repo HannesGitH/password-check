@@ -1,6 +1,5 @@
 <script lang="ts">
   import { password, security, hidden as pw_is_hidden } from "./pw_store";
-  export let withAsterix: Boolean = false;
 
   $: type = !$pw_is_hidden ? "text" : "password";
   $: cla = !$pw_is_hidden ? "fa-eye" : "fa-eye-slash";
@@ -25,13 +24,7 @@
   <i class="{cla} fas" on:click={ () => $pw_is_hidden = !$pw_is_hidden } />
 </div>
 
-<p>
-  it takes
-  <b>
-    {$security.crack_times_display.offline_fast_hashing_1e10_per_second}
-  </b>
-  to break your password {withAsterix ? "*" : ""}
-</p>
+
 
 <style>
   #input-wrapper {
@@ -63,9 +56,4 @@
   /* input:focus {
   } */
 
-  b {
-    font-size: large;
-    font-weight: bolder;
-    text-transform: uppercase;
-  }
 </style>
