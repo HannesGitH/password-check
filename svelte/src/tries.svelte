@@ -40,11 +40,11 @@
       >
     {:else}
       * <br />
-      <small>
+      <c-small>
         Thats assuming an otherwise unprotected offline scenario, where a hacker
         would try around {Number(10000000000).toLocaleString()} passwords per second
         on a normal consumer-grade PC.
-      </small> <br /><br />
+      </c-small> <br /><br />
       Your password would be {scoreStrings[$harderScore]}, a hacker would {scoreStrings2[
         $harderScore
       ]} an avarage of
@@ -69,10 +69,16 @@
 <style>
   #main {
     font-weight: 200;
-    font-size: small;
+    font-size: 12px;
+    /* font-size: small; */
     padding: 5%;
   }
 
+  c-small{
+    font-size: 12px;
+    font-weight: 200;
+    opacity: 0.5;
+  }
   /* #main.footer {
     position: fixed;
     bottom: 0;

@@ -14,6 +14,7 @@
 
 <div id="input-wrapper">
   <input 
+    label="Password to evaluate"
     {type} 
     value={$password} 
     on:input={ onInput } 
