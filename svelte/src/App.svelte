@@ -19,7 +19,7 @@
       <h1>{name}</h1>
       <PWBar />
       {#if !$is_empty}
-        <div transition:slide={{ duration: 100 }} style="height: 3em;">
+        <div transition:slide={{ duration: 100 }} >
           <PWTime withAsterix={hasFootNote} />
           {#if $elapsed > $seconds}<p
               mini
