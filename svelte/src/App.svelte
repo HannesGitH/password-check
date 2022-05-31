@@ -10,32 +10,39 @@
   let usesOldFootNote: Boolean = false;
 </script>
 
-<main style="background-color: #{$color};">
-  <h1>{name}</h1>
-  <PWBar withAsterix={hasFootNote} />
-  {#if $elapsed > $seconds}<p mini transition:slide={{ duration: 1000 }}>
-      (thats shorter than you've been here)
-    </p>
-  {/if}
-</main>
-{#if hasFootNote && usesOldFootNote}
-  <div mini style="padding: 0 10%;">
-    * <br />
-    If using a normal PC trying around {Number(10000000000).toLocaleString()} passwords
-    per second. <br />
-    On an online-service it would probably take like
-    <div id="securityText" style="color: #{$color_easy}">
-      {$security.crack_times_display.online_no_throttling_10_per_second.toUpperCase()}
-    </div>
+<div id="wrapper">
+  <div class="inner">
+    <main style="background-color: #{$color};">
+      <h1>{name}</h1>
+      <PWBar withAsterix={hasFootNote} />
+      {#if $elapsed > $seconds}<p mini transition:slide={{ duration: 1000 }}>
+          (thats shorter than you've been here)
+        </p>
+      {/if}
+    </main>
+    {#if hasFootNote && usesOldFootNote}
+      <div mini style="padding: 0 10%;">
+        * <br />
+        If using a normal PC trying around {Number(
+          10000000000
+        ).toLocaleString()} passwords per second. <br />
+        On an online-service it would probably take like
+        <div id="securityText" style="color: #{$color_easy}">
+          {$security.crack_times_display.online_no_throttling_10_per_second.toUpperCase()}
+        </div>
+      </div>
+    {/if}
   </div>
-{/if}
+  <div class="inner" id="tries">
+    <Tries thisIsTheFootNote={hasFootNote && !usesOldFootNote} />
+  </div>
+</div>
 
-<Tries thisIsTheFootNote={hasFootNote && !usesOldFootNote}/>
-
-<style>
+<style lang="scss">
   main {
     /* text-shadow: 0px 1px 0px #000000; */
     text-align: center;
+    /* width: 100%; */
     padding: 5%;
     margin: 5%;
     margin-bottom: 2%;
@@ -57,8 +64,24 @@
   h1 {
     text-transform: uppercase;
     font-size: 3em;
-	font-weight: lighter;
+    font-weight: lighter;
     /* font-weight: thin; */
+  }
+
+  #wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    > .inner:not(#tries) {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   @media (max-width: 740px) {
@@ -67,7 +90,7 @@
     }
     h1 {
       font-size: 1.5em;
-	  font-weight: normal;
+      font-weight: normal;
     }
   }
 </style>

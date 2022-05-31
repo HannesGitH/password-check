@@ -23,8 +23,8 @@
   ];
 </script>
 
-<MediaQuery query="(min-height: 30em) and (min-width: 20em)" let:matches>
-  <div id="main" class={matches ? "footer" : "normal"}>
+<!-- <MediaQuery query="((min-height: 30em) and (min-width: 20em)) or (min-width: 750px)" let:matches> -->
+  <div id="main" > <!-- {matches ? "footer" : "normal"}> -->
     {#if !thisIsTheFootNote}
       For an otherwise unprotected offline scenario that's {scoreStrings[
         $harderScore
@@ -64,7 +64,7 @@
       > to crack.
     {/if}
   </div>
-</MediaQuery>
+<!-- </MediaQuery> -->
 
 <style>
   #main {
