@@ -8,22 +8,36 @@
   import { color, color_easy, seconds, security } from "./pw_store";
   import { slide } from "svelte/transition";
   import { is_empty } from "./pw_store";
+  import MediaQuery from "./MediaQuery.svelte";
 
   let hasFootNote: Boolean = true;
-  let usesOldFootNote: Boolean = false;
+
+  let screenWidth: number;
+  let screenHeight: number;
+
+  $: _extraheight = screenWidth > 740 ? 100 : 0;
+  $: showHeadline = screenHeight > (250+_extraheight);
+  $: showAsterix = hasFootNote && screenHeight > (400+_extraheight);
+  $: showResult = screenHeight > (150+_extraheight);
+  $: showExtra = screenHeight > (400+_extraheight);
 </script>
 
+<svelte:window bind:innerWidth={screenWidth} bind:innerHeight={screenHeight} />
+
 <div id="wrapper">
+  <!-- ((min-height: 12em) or ((min-width: 740px) and (min-height: 20em))) -->
   <div class="inner">
     <main style="background-color: #{$color};">
-      <h1>{name}</h1>
+      {#if showHeadline}
+        <h1 transition:slide={{ duration: 200 }}>{name}</h1>
+      {/if}
       <PWBar />
-      {#if !$is_empty}
-        <div transition:slide={{ duration: 100 }} >
-          <PWTime withAsterix={hasFootNote} />
-          {#if $elapsed > $seconds}<p
+      {#if !$is_empty && showResult}
+        <div transition:slide={{ duration: 100 }}>
+          <PWTime withAsterix={showAsterix} />
+          {#if $elapsed > $seconds && showExtra}<p
               mini
-              transition:slide={{ duration: 500, delay: 100}}
+              transition:slide={{ duration: 500, delay: 100 }}
             >
               (thats shorter than you've been here)
             </p>
@@ -32,24 +46,12 @@
       {/if}
     </main>
     {#if !$is_empty}
-      {#if hasFootNote && usesOldFootNote}
-        <div mini style="padding: 0 10%;">
-          * <br />
-          If using a normal PC trying around {Number(
-            10000000000
-          ).toLocaleString()} passwords per second. <br />
-          On an online-service it would probably take like
-          <div id="securityText" style="color: #{$color_easy}">
-            {$security.crack_times_display.online_no_throttling_10_per_second.toUpperCase()}
-          </div>
-        </div>
-      {/if}
-      <div id="warn"><Warn /></div>
+      <div id="warn" ><Warn /></div>
     {/if}
   </div>
-  {#if !$is_empty}
-    <div class="inner" id="tries" transition:slide={{ duration: 500 }}>
-      <Tries thisIsTheFootNote={hasFootNote && !usesOldFootNote} />
+  {#if !$is_empty && showResult}
+    <div class="inner" id="tries" transition:slide={{ duration: 500}}>
+      <Tries thisIsTheFootNote={showAsterix} />
     </div>
   {/if}
 </div>
@@ -71,11 +73,6 @@
     font-size: 0.8em;
   }
 
-  #securityText {
-    font-weight: 700;
-    font-size: larger;
-    text-transform: uppercase;
-  }
 
   [mini] {
     font-size: 12px;
@@ -91,7 +88,6 @@
   #wrapper {
     display: flex;
     flex-direction: column;
-    ;
     justify-content: space-between;
     align-items: center;
     position: absolute;
@@ -116,6 +112,15 @@
     h1 {
       font-size: 1.5em;
       font-weight: normal;
+    }
+  }
+
+  @media (max-width: 500px) {
+    main {
+      padding: 1em;
+    }
+    h1 {
+      font-size: 1.2em;
     }
   }
 </style>
