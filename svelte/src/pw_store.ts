@@ -1,4 +1,4 @@
-import { readable, derived, writable } from "svelte/store";
+import { readable, derived, writable, Readable, Writable } from "svelte/store";
 import zxcvbn from "./zxcvbn";
 import { getColorMix } from "./color";
 
@@ -7,6 +7,8 @@ export const password = writable("");
 export const security = derived(password, ($password: String) =>
   zxcvbn($password)
 );
+
+export const hidden : Writable<boolean> = writable(true);
 
 export const seconds = derived(
   security,

@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { password, security } from "./pw_store";
+  import { password, security, hidden as pw_is_hidden } from "./pw_store";
   export let withAsterix: Boolean = false;
 
-  let show_password = false;
-  $: type = show_password ? "text" : "password";
-  $: cla = show_password ? "fa-eye" : "fa-eye-slash";
+  $: type = !$pw_is_hidden ? "text" : "password";
+  $: cla = !$pw_is_hidden ? "fa-eye" : "fa-eye-slash";
 	
   function onInput (event) {
     $password = event.target.value
@@ -19,11 +18,11 @@
     value={$password} 
     on:input={ onInput } 
     style="
-      font-weight: {show_password ? 'normal' : 'bold'}; 
-      letter-spacing : {show_password ? '0' : '3px'}
+      font-weight: {!$pw_is_hidden ? 'normal' : 'bold'}; 
+      letter-spacing : {!$pw_is_hidden ? '0' : '3px'}
     "
   /> 
-  <i class="{cla} fas" on:click={ () => show_password = !show_password } />
+  <i class="{cla} fas" on:click={ () => $pw_is_hidden = !$pw_is_hidden } />
 </div>
 
 <p>

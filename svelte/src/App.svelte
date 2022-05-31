@@ -2,6 +2,7 @@
   export let name: string;
   import PWBar from "./pw.svelte";
   import Tries from "./tries.svelte";
+  import Warn from "./warn.svelte";
   import { elapsed } from "./store";
   import { color, color_easy, seconds, security } from "./pw_store";
   import { slide } from "svelte/transition";
@@ -32,6 +33,7 @@
         </div>
       </div>
     {/if}
+  <div id="warn"><Warn/></div>
   </div>
   <div class="inner" id="tries">
     <Tries thisIsTheFootNote={hasFootNote && !usesOldFootNote} />
@@ -44,11 +46,15 @@
     text-align: center;
     /* width: 100%; */
     padding: 5%;
-    margin: 5%;
+    // margin: 5% 0;
     margin-bottom: 2%;
     color: white;
     border-radius: 2em;
     transition: background-color 0.8s ease;
+  }
+  #warn{
+    margin: 1em 0;
+    font-size: 0.8em;
   }
 
   #securityText {
@@ -76,8 +82,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    margin: 5%;
+    width: 90%;
+    height: 90%;
     > .inner:not(#tries) {
       width: 100%;
       height: 100%;

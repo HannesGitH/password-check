@@ -71,7 +71,7 @@
     font-weight: 200;
     font-size: 12px;
     /* font-size: small; */
-    padding: 5%;
+    /* padding: 5%; */
   }
 
   c-small{
