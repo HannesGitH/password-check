@@ -1,7 +1,7 @@
 <script lang="ts">
   export let thisIsTheFootNote: Boolean = false;
 
-  import MediaQuery from "./MediaQuery.svelte";
+  // import MediaQuery from "./MediaQuery.svelte";
 
   import { security, harderScore, color_easy } from "./pw_store";
 
@@ -73,10 +73,10 @@
     padding: 5%;
   }
 
-  #main.footer {
+  /* #main.footer {
     position: fixed;
     bottom: 0;
-  }
+  } */
 
   #securityText {
     font-weight: 700;

@@ -60,8 +60,8 @@
     padding: 0.5em;
   }
 
-  input:focus {
-  }
+  /* input:focus {
+  } */
 
   b {
     font-size: large;
