@@ -6,7 +6,7 @@
   import Warn from "./warn.svelte";
   import { elapsed } from "./store";
   import { color, color_easy, seconds, security } from "./pw_store";
-  import { slide } from "svelte/transition";
+  import { slide, fade } from "svelte/transition";
   import { is_empty } from "./pw_store";
   import MediaQuery from "./MediaQuery.svelte";
 
@@ -19,7 +19,8 @@
   $: showHeadline = screenHeight > (250+_extraheight);
   $: showAsterix = hasFootNote && screenHeight > (400+_extraheight);
   $: showResult = screenHeight > (150+_extraheight);
-  $: showExtra = screenHeight > (400+_extraheight);
+  $: showExtra = screenHeight > (390+_extraheight);
+  $: showOnline = screenHeight > (350+_extraheight);
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} bind:innerHeight={screenHeight} />
@@ -49,8 +50,8 @@
       <div id="warn" ><Warn /></div>
     {/if}
   </div>
-  {#if !$is_empty && showResult}
-    <div class="inner" id="tries" transition:slide={{ duration: 500}}>
+  {#if !$is_empty && showOnline}
+    <div class="inner" id="tries" transition:fade={{ duration: 500}}>
       <Tries thisIsTheFootNote={showAsterix} />
     </div>
   {/if}
