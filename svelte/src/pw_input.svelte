@@ -12,6 +12,7 @@
 
 <div id="input-wrapper">
   <input 
+    id="password-input"
     label="Password to evaluate"
     {type} 
     value={$password} 
@@ -21,6 +22,9 @@
       letter-spacing : {!$pw_is_hidden ? '0' : '3px'}
     "
   /> 
+  <label for="password-input">
+    Password to evaluate
+  </label>
   <i class="{cla} fas" on:click={ () => $pw_is_hidden = !$pw_is_hidden } />
 </div>
 
