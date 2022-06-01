@@ -25,7 +25,9 @@ jobs:
           node-version: 14
 
       - name: build spa pwa
-        run: npm run build
+        run: |
+          npm i
+          npm run build
       - name: upload artifact
         uses: actions/upload-artifact@v2
         with:
