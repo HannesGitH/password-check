@@ -11,6 +11,10 @@ name: Release
 env:
   working-directory: ./svelte
 
+defaults:
+  run:
+    working-directory: ./svelte
+
 jobs:
   build:
     runs-on: ubuntu-latest
