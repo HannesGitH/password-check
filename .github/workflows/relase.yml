@@ -48,7 +48,7 @@ jobs:
 
       - name: prevent jekyll build
         run: |
-          cd pwa && touch .nojekyll
+          cd ../pwa && touch .nojekyll
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
