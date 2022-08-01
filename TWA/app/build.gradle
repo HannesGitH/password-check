@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import groovy.xml.MarkupBuilder
+// import groovy.xml.MarkupBuilder
 
 apply plugin: 'com.android.application'
 
@@ -48,7 +48,7 @@ android {
         targetSdkVersion 32
         versionCode 5
         versionName "2.1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
         // The name for the application on the Android Launcher
         resValue "string", "appName", twaManifest.name
@@ -121,42 +121,6 @@ android {
     }
 }
 
-task generateShorcutsFile {
-    assert twaManifest.shortcuts.size() < 5, "You can have at most 4 shortcuts."
-    twaManifest.shortcuts.eachWithIndex { s, i ->
-        assert s.name != null, 'Missing `name` in shortcut #' + i
-        assert s.short_name != null, 'Missing `short_name` in shortcut #' + i
-        assert s.url != null, 'Missing `icon` in shortcut #' + i
-        assert s.icon != null, 'Missing `url` in shortcut #' + i
-    }
-
-    def shortcutsFile = new File("$projectDir/src/main/res/xml", "shortcuts.xml")
-
-    def xmlWriter = new StringWriter()
-    def xmlMarkup = new MarkupBuilder(new IndentPrinter(xmlWriter, "    ", true))
-
-    xmlMarkup
-        .'shortcuts'('xmlns:android': 'http://schemas.android.com/apk/res/android') {
-            twaManifest.shortcuts.eachWithIndex { s, i ->
-                'shortcut'(
-                        'android:shortcutId': 'shortcut' + i,
-                        'android:enabled': 'true',
-                        'android:icon': '@drawable/' + s.icon,
-                        'android:shortcutShortLabel': '@string/shortcut_short_name_' + i,
-                        'android:shortcutLongLabel': '@string/shortcut_name_' + i) {
-                    'intent'(
-                            'android:action': 'android.intent.action.MAIN',
-                            'android:targetPackage': twaManifest.applicationId,
-                            'android:targetClass': 'com.google.androidbrowserhelper.trusted.LauncherActivity',
-                            'android:data': 'https://' + twaManifest.hostName + s.url)
-                    'categories'('android:name': 'android.intent.category.LAUNCHER')
-                }
-            }
-        }
-    shortcutsFile.text = xmlWriter.toString() + '\n'
-}
-
-preBuild.dependsOn(generateShorcutsFile)
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
