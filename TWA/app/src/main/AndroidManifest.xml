@@ -37,6 +37,7 @@
             android:value="@string/crosLaunchUrl" />
 
         <activity android:name="com.google.androidbrowserhelper.trusted.LauncherActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:label="@string/appName">
             <meta-data android:name="android.support.customtabs.trusted.DEFAULT_URL"
                 android:value="@string/launchUrl" />

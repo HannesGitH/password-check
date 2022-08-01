@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import groovy.xml.MarkupBuilder;
+import groovy.xml.MarkupBuilder
 
 apply plugin: 'com.android.application'
 
@@ -41,13 +41,13 @@ def twaManifest = [
 ]
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 32
     defaultConfig {
         applicationId twaManifest.applicationId
         minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 4
-        versionName "2.0.1"
+        targetSdkVersion 32
+        versionCode 5
+        versionName "2.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         // The name for the application on the Android Launcher
@@ -160,5 +160,5 @@ preBuild.dependsOn(generateShorcutsFile)
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:1.1.0'
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.3.0'
 }
