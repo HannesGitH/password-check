@@ -5,7 +5,12 @@
       <map>
         <entry key="app/src/main/res/drawable-108x108/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-anydpi-v26/favicon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/endless_constellation.xml" value="0.199" />
         <entry key="app/src/main/res/drawable/ic_baseline_security_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_favicon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/rose_petals.xml" value="0.199" />
+        <entry key="app/src/main/res/drawable/spectrum_gradient.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/spectrum_gradient__1_.xml" value="0.199" />
       </map>
     </option>
   </component>

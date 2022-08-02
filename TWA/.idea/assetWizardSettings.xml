@@ -28,7 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_security_24" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_favicon" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/app/src/main/res/drawable/favicon.svg" />
                           </map>
                         </option>
                       </PersistentState>

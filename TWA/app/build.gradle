@@ -41,11 +41,11 @@ def twaManifest = [
 ]
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
     defaultConfig {
         applicationId twaManifest.applicationId
         minSdkVersion 16
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode 5
         versionName "2.1.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -125,5 +125,5 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.3.0'
-    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
 }

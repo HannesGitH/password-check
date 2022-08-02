@@ -43,7 +43,7 @@
         </clipPath>
     </defs>
 
-    <g id="layer5" style="display:inline" transform="matrix(1,0,0,1,39.5,0)">
+    <g id="layer5" style="display:inline" transform="matrix(1,-0.6,0,1,39.5,0)">
         <g id="logoSkewLeft" class="logoSkewLeft"  style="display:inline" >
             <g id="layer6" style="display:inline" transform="matrix(1,0,0,1,-39.5,0)">
                 <g id="layer1" style="display:inline" transform="matrix(0.46573393,0.26889161,0,0.46573393,-6.8217847e-5,-22.913636)">
@@ -58,8 +58,8 @@
             </g>
         </g>
     </g>
-    <g id="layer4"  style="display:inline" transform="matrix(1,0,0,1,39.5,0)">
-        <g id="logoSkewRight" class="logoSkewRight"  style="display:inline ; transform:skewY(30deg);" >
+    <g id="layer4"  style="display:inline" transform="matrix(1,0.6,0,1,39.5,0)">
+        <g id="logoSkewRight" class="logoSkewRight"  style="display:inline ; transform:skewY(30);" >
             <g style="display:inline" id="g1070" transform="matrix(0.46573121,-0.26889004,0,0.46573121,-72.175758,86.815987)">
                 <path d="M 85.215112,1e-5 1.5e-4,49.199074 v 98.398136 l 85.214962,49.19906 m 0,0 V 1e-5 196.79627 L 170.43058,147.59721 V 49.199074 L 85.215112,1e-5 m 0,98.398126 L 59.45131,113.2732 V 83.523075 L 33.687005,98.398136 V 128.14826 L 7.9226745,143.02332 V 68.648015 L 33.687005,53.772955 v 29.75012 L 59.45131,68.648015 V 38.898411 l 25.763802,-14.87506 m 51.528638,29.749604 v 29.75012 l -25.76431,-14.87506 z m 0,44.625181 v 29.750124 l -25.76431,14.87506 V 113.2732 Z" style="display:inline;fill:#202020;fill-opacity:1;stroke:none;stroke-width:0.517964px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" id="path76540-4-1-9-0-8-6" clip-path="url(#clipPath861-7)" transform="translate(69.757871,-96.93413)"/>
                 <path id="path76540-4-1-9-04-7" style="display:inline;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.517964px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 59.450961,143.0232 -25.76425,-14.875 25.76425,-14.875 z m -25.76425,-44.625004 25.76425,14.875004 -25.76425,14.875 z m 0,-44.625002 25.76425,14.875 -25.76425,14.875 z m 103.056979,0 25.76424,14.875 V 143.0232 l -25.76424,-14.875 z m -25.76425,14.875 25.76425,14.875 V 98.398196 L 110.97944,83.523194 Z m -25.764239,-44.625 25.764239,14.875 V 113.2732 L 85.215201,98.398196 Z" clip-path="url(#clipPath857-4)" transform="translate(69.757871,-96.93413)"/>
