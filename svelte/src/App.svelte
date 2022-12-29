@@ -9,6 +9,7 @@
   import { slide, fade } from "svelte/transition";
   import { is_empty } from "./pw_store";
   import MediaQuery from "./MediaQuery.svelte";
+  import Ad from "./Ad.svelte";
 
   let hasFootNote: Boolean = true;
 
@@ -24,6 +25,7 @@
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} bind:innerHeight={screenHeight} />
+
 
 <div id="wrapper">
   <!-- ((min-height: 12em) or ((min-width: 740px) and (min-height: 20em))) -->
@@ -44,6 +46,8 @@
             </p>
           {/if}
         </div>
+      {:else}
+        <Ad />
       {/if}
     </main>
     {#if !$is_empty}
