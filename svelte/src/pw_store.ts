@@ -50,7 +50,7 @@ export const convertScoreToFormat = (score: string) => {
   //regex to remove all non numbers
   let scoreNum = score.replace(/[^0-9]/g, "");
 
-  let scoreText = score.replace(/[0-9]/g, "").replace(" ", "");
+  let scoreText = score.replace(/[0-9 ]/g, "");
 
   return {scoreNum, scoreText}
 };
