@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { _ } from "svelte-i18n";
   export let name: string;
   import PWBar from "./pw_input.svelte";
   import PWTime from "./pw_time.svelte";
@@ -17,7 +18,7 @@
 
   $: _extraheight = screenWidth > 740 ? 100 : 0;
   $: showHeadline = screenHeight > (250+_extraheight);
-  $: showAsterix = hasFootNote && screenHeight > (400+_extraheight);
+  $: showAsterisk = hasFootNote && screenHeight > (400+_extraheight);
   $: showResult = screenHeight > (150+_extraheight);
   $: showExtra = screenHeight > (390+_extraheight);
   $: showOnline = screenHeight > (350+_extraheight);
@@ -30,17 +31,17 @@
   <div class="inner">
     <main style="background-color: #{$color};">
       {#if showHeadline}
-        <h1 transition:slide={{ duration: 200 }}>{name}</h1>
+        <h1 transition:slide={{ duration: 200 }}>{$_("name", {default: name})}</h1>
       {/if}
       <PWBar />
       {#if !$is_empty && showResult}
         <div transition:slide={{ duration: 100 }}>
-          <PWTime withAsterix={showAsterix} />
+          <PWTime withAsterisk={showAsterisk} />
           {#if $elapsed > $seconds && showExtra}<p
               mini
               transition:slide={{ duration: 500, delay: 100 }}
             >
-              (thats shorter than you've been here)
+              {$_("less_than_app_open_extra")}
             </p>
           {/if}
         </div>
@@ -52,7 +53,7 @@
   </div>
   {#if !$is_empty && showOnline}
     <div class="inner" id="tries" transition:fade={{ duration: 500}}>
-      <Tries thisIsTheFootNote={showAsterix} />
+      <Tries thisIsTheFootNote={showAsterisk} />
     </div>
   {/if}
 </div>

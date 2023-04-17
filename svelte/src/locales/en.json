@@ -1,0 +1,13 @@
+{
+    "name" : "password crack time check",
+    "time_taken": "it takes <b> {time} </b> to break your password {asterisk}",
+    "less_than_app_open_extra" : "(that''s shorter than you've been here)",
+    "hps_note": "Thats assuming an otherwise unprotected offline scenario, where a hacker would try around {hps} passwords per second on a normal consumer-grade PC.",
+    "tries_note": "Your password would be {harderScore, select, 0 {unthinkably bad} 1 {bad} 2 {okayish} 3 {safe} 4 {ridiculously secure} 5 {uncrackable} other {weird}}, a hacker would { harderScore, select,  0{laugh at} 1{only need} 2{need} 3{baffle at} 4{cry since he faces} 5{be stupid to even try to tackle} other {need}} an average of  <span id=''tries''>  {tries} </span><strong>tries</strong>.",
+    "real_world":{
+        "note_prefix" : "In a more real-world scenario (like online services) though, this password would {still, select, 1 {still} other {}} be",
+        "score": "{score, select, 0 {unthinkably bad} 1 {bad} 2 {okayish} 3 {safe} 4 {ridiculously secure} 5 {uncrackable} other {weird}}",
+        "glue": "and take",
+        "suffix": "to crack."
+    }
+}
