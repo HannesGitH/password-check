@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { _, getLocaleFromNavigator, locale } from "svelte-i18n";
   export let name: string;
   import PWBar from "./pw_input.svelte";
   import PWTime from "./pw_time.svelte";
   import Tries from "./tries.svelte";
   import Warn from "./warn.svelte";
+  import LocaleEnable from "./localeEnable.svelte";
   import { elapsed } from "./store";
   import { color, color_easy, seconds, security } from "./pw_store";
   import { slide, fade } from "svelte/transition";
@@ -15,44 +17,54 @@
   let screenWidth: number;
   let screenHeight: number;
 
+  let isGlobal: boolean = false;
+  $: isGlobal ? locale.set(getLocaleFromNavigator()) : locale.set("en");
+  let supportedLocales = ["en", "es", "de", "ru"];
+
   $: _extraheight = screenWidth > 740 ? 100 : 0;
-  $: showHeadline = screenHeight > (250+_extraheight);
-  $: showAsterix = hasFootNote && screenHeight > (400+_extraheight);
-  $: showResult = screenHeight > (150+_extraheight);
-  $: showExtra = screenHeight > (390+_extraheight);
-  $: showOnline = screenHeight > (350+_extraheight);
+  $: showHeadline = screenHeight > 250 + _extraheight;
+  $: showAsterisk = hasFootNote && screenHeight > 400 + _extraheight;
+  $: showResult = screenHeight > 150 + _extraheight;
+  $: showExtra = screenHeight > 390 + _extraheight;
+  $: showOnline = screenHeight > 350 + _extraheight;
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} bind:innerHeight={screenHeight} />
+
+{#if !getLocaleFromNavigator().startsWith("en") && supportedLocales.some((l) => getLocaleFromNavigator().startsWith(l))}
+  <LocaleEnable bind:isGlobal />
+{/if}
 
 <div id="wrapper">
   <!-- ((min-height: 12em) or ((min-width: 740px) and (min-height: 20em))) -->
   <div class="inner">
     <main style="background-color: #{$color};">
       {#if showHeadline}
-        <h1 transition:slide={{ duration: 200 }}>{name}</h1>
+        <h1 transition:slide={{ duration: 200 }}>
+          {$_("name", { default: name })}
+        </h1>
       {/if}
       <PWBar />
       {#if !$is_empty && showResult}
         <div transition:slide={{ duration: 100 }}>
-          <PWTime withAsterix={showAsterix} />
+          <PWTime withAsterisk={showAsterisk} />
           {#if $elapsed > $seconds && showExtra}<p
               mini
               transition:slide={{ duration: 500, delay: 100 }}
             >
-              (thats shorter than you've been here)
+              {$_("less_than_app_open_extra")}
             </p>
           {/if}
         </div>
       {/if}
     </main>
     {#if !$is_empty}
-      <div id="warn" ><Warn /></div>
+      <div id="warn"><Warn /></div>
     {/if}
   </div>
   {#if !$is_empty && showOnline}
-    <div class="inner" id="tries" transition:fade={{ duration: 500}}>
-      <Tries thisIsTheFootNote={showAsterix} />
+    <div class="inner" id="tries" transition:fade={{ duration: 500 }}>
+      <Tries thisIsTheFootNote={showAsterisk} />
     </div>
   {/if}
 </div>
@@ -73,7 +85,6 @@
     margin: 1em 0;
     font-size: 0.8em;
   }
-
 
   [mini] {
     font-size: 12px;

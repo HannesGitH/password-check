@@ -1,0 +1,14 @@
+{
+    "name" : "Passwort Tester",
+    "time_taken": "Es dauert <b>{scoreNum} {scoreText, select, lessthanasecond {weniger als eine Sekunde} month{Monat} months{Monate} second{Sekunde} seconds{Sekunden} minute{Minute} minutes{Minuten} hour{Stunde} hours{Stunden} day{Tag} days{Tage} year{Jahr} years{Jahre} centuries{Jahrhunderte} other {{scoreText}}}</b>, um Ihr Passwort zu knacken. {asterisk}",
+    "less_than_app_open_extra" : "(das ist kürzer als die App offen ist)",
+    "hps_note": "Dies gilt für ein ansonsten ungeschütztes Offline-Szenario, bei dem ein Hacker ca. {hps} Passwörter pro Sekunde auf einem normalen Verbraucher-PC ausprobieren würde.",
+    "tries_note": "Ihr Passwort wäre {harderScore, select, 0 {unvorstellbar schlecht} 1 {schlecht} 2 {in Ordnung} 3 {sicher} 4 {absolut sicher} 5 {absurd unhackbar} other {seltsam}}, ein Hacker {harderScore, select, 0{würde über} 1{bräuchte gerade mal} 2{bräuchte} 3{würde sich über} 4{müsste wahrscheinlich weinen, da er mit} 5{wäre schon dumm überhaupt} other {würde}} durchschnittlich <span id=''tries''>{tries}</span> Versuche {harderScore, select, 0{nur lachen} 1{} 2{} 3{schon wundern} 4{fast kein Chance hätte} 5{durchgehen zu wollen} other {}}.",
+    "real_world":{
+        "note_prefix" : "In einem realistischeren Szenario (wie bei Online-Diensten) wäre dieses Passwort {still, select, 1 {immer noch} other {}}",
+        "score": "{score, select, 0 {unvorstellbar schlecht} 1 {schlecht} 2 {in Ordnung} 3 {sicher} 4 {absolut sicher} 5 {unverwundbar} other {seltsam}}",
+        "glue": "und benötigte",
+        "time": "{scoreNum} {scoreText, select, lessthanasecond {weniger als eine Sekunde} month{Monat} months{Monate} second{Sekunde} seconds{Sekunden} minute{Minute} minutes{Minuten} hour{Stunde} hours{Stunden} day{Tag} days{Tage} year{Jahr} years{Jahre} centuries{Jahrhunderte} other {{scoreText}}}",
+        "suffix": "zum Knacken."
+    }
+}

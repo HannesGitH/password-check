@@ -1,18 +1,25 @@
 <script lang="ts">
-  import { security } from "./pw_store";
-  export let withAsterix: Boolean = false;
+  import { _ } from "svelte-i18n";
+  import { security, convertScoreToFormat } from "./pw_store";
+  export let withAsterisk: Boolean = false;
 </script>
 
 <p>
-  it takes
+  {@html $_("time_taken", {
+    values: {
+      ...convertScoreToFormat($security.crack_times_display.offline_fast_hashing_1e10_per_second),
+      asterisk: withAsterisk ? "*" : "",
+    },
+  })}
+  <!-- it takes
   <b>
     {$security.crack_times_display.offline_fast_hashing_1e10_per_second}
   </b>
-  to break your password {withAsterix ? "*" : ""}
+  to break your password {withAsterisk ? "*" : ""} -->
 </p>
 
 <style>
-  b {
+  p > :global(b) {
     font-size: large;
     font-weight: bolder;
     text-transform: uppercase;

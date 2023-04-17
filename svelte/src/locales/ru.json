@@ -1,0 +1,14 @@
+{
+    "name" : "Тестировщик пароля",
+    "time_taken": "Для взлома вашего пароля потребуется <b>{scoreNum} {scoreText, select, lessthanasecond {менее секунды} month{месяц} months{месяца} second{секунда} seconds{секунды} minute{минута} minutes{минут} hour{час} hours{часов} day{день} days{дней} year{год} years{лет} centuries{веков} other {{scoreText}}}</b>. {asterisk}",
+    "less_than_app_open_extra" : "(это меньше, чем приложение было открыто)",
+    "hps_note": "Это предполагает неограниченный оффлайн-сценарий, когда хакер пытается взломать пароли со скоростью около {hps} на обычном ПК для потребителей.",
+    "tries_note": "Ваш пароль был бы {harderScore, select, 0 {невероятно плохим} 1 {плохим} 2 {нормальным} 3 {безопасным} 4 {абсолютно безопасным} 5 {абсурдно надежным} other {странным}}, хакер {harderScore, select, 0{бы только посмеялся} 1{} 2{} 3{поразился бы} 4{почти наверняка не смог бы} 5{уже был бы глуп, пытаясь взломать} other {}} среднее количество попыток <span id=''tries''>{tries}</span>.",
+    "real_world":{
+        "note_prefix" : "В более реалистичном сценарии (например, при онлайн-сервисах) этот пароль {still, select, 1 {все еще} other {}}",
+        "score": "{score, select, 0 {невероятно плохой} 1 {плохой} 2 {нормальный} 3 {безопасный} 4 {абсолютно безопасный} 5 {непробиваемый} other {странный}}",
+        "glue": "и займет",
+        "time": "{scoreNum} {scoreText, select, lessthanasecond {менее секунды} month{месяц} months{месяца} second{секунда} seconds{секунды} minute{минута} minutes{минут} hour{час} hours{часов} day{день} days{дней} year{год} years{лет} centuries{веков} other {{scoreText}}}",
+        "suffix": "для взлома."
+    }
+}

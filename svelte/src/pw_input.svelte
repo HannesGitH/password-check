@@ -25,6 +25,7 @@
   <!-- <label for="password-input">
     Password to evaluate
   </label> -->
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <i class="{cla} fas" on:click={ () => $pw_is_hidden = !$pw_is_hidden } />
 </div>
 

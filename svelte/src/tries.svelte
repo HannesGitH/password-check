@@ -1,27 +1,11 @@
 <script lang="ts">
+  import { _ } from "svelte-i18n";
   import { slide } from "svelte/transition";
   export let thisIsTheFootNote: Boolean = false;
 
   // import MediaQuery from "./MediaQuery.svelte";
 
-  import { security, harderScore, color_easy } from "./pw_store";
-
-  const scoreStrings = [
-    "unthinkably bad",
-    "bad",
-    "okayish",
-    "safe",
-    "rediculously secure",
-    "uncrackable",
-  ];
-  const scoreStrings2 = [
-    "laugh at",
-    "only need",
-    "need",
-    "baffle at",
-    "cry since he faces",
-    "be stupid to even try to tackle",
-  ];
+  import { security, harderScore, color_easy, convertScoreToFormat } from "./pw_store";
 </script>
 
 <!-- <MediaQuery query="((min-height: 30em) and (min-width: 20em)) or (min-width: 750px)" let:matches> -->
@@ -29,30 +13,33 @@
   <!-- {matches ? "footer" : "normal"}> -->
   {#if thisIsTheFootNote}
     <div transition:slide>
-    * <br />
-    <c-small>
-      Thats assuming an otherwise unprotected offline scenario, where a hacker
-      would try around {Number(10000000000).toLocaleString()} passwords per second
-      on a normal consumer-grade PC.
-    </c-small> <br /><br />
-  </div>
+      * <br />
+      <c-small>
+        {$_("hps_note", {
+          values: { hps: Number(10000000000).toLocaleString() },
+        })}
+      </c-small> <br /><br />
+    </div>
   {/if}
-  Your password would be {scoreStrings[$harderScore]}, a hacker would {scoreStrings2[
-    $harderScore
-  ]} an avarage of
-  <span id="tries"> {$security.guesses.toLocaleString()} </span><strong
-    >tries</strong
-  >. <br />
-  In a more real-world scenario (like online services) though, this password would
-  {scoreStrings[$harderScore] == scoreStrings[$security.score] ? "still" : ""}
-  be
+  {@html $_("tries_note", {
+    values: {
+      harderScore: $harderScore,
+      tries: $security.guesses.toLocaleString()
+    },
+  })}
+  <br />
+  {$_("real_world.note_prefix", {
+  values: { still: $harderScore == $security.score ? 1 : 0}})}
   <span id="securityText" style="color: #{$color_easy}"
-    >{scoreStrings[$security.score]}</span
+    >{$_("real_world.score", {values:{score: $security.score}})}</span
   >
-  and take
+  {$_("real_world.glue")}
   <span id="securityText" style="color: #{$color_easy}"
-    >{$security.crack_times_display.online_no_throttling_10_per_second.toUpperCase()}</span
-  > to crack.
+    >
+    {$_("real_world.time", {values:convertScoreToFormat($security.crack_times_display.online_no_throttling_10_per_second)})}
+    <!-- {$security.crack_times_display.online_no_throttling_10_per_second.toUpperCase()} -->
+    </span
+  > {$_("real_world.suffix")}
 </div>
 
 <!-- </MediaQuery> -->
@@ -80,7 +67,7 @@
     text-transform: uppercase;
   }
 
-  #tries {
+  #main :global(#tries) {
     font-weight: 700;
     font-size: larger;
   }

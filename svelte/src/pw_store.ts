@@ -43,3 +43,14 @@ export const color_easy = derived(security, ($security) =>
 
 const between = (min: number, x: number, max: number) =>
   Math.min(max, Math.max(min, Number.isNaN(x) ? 0 : x));
+
+
+
+export const convertScoreToFormat = (score: string) => {
+  //regex to remove all non numbers
+  let scoreNum = score.replace(/[^0-9]/g, "");
+
+  let scoreText = score.replace(/[0-9 ]/g, "");
+
+  return {scoreNum, scoreText}
+};
