@@ -10,12 +10,14 @@ import { register, addMessages, init, getLocaleFromNavigator } from 'svelte-i18n
 // register('de', () => import('./de.json'));
 
 import en from './locales/en.json';
-// import ru from './locales/ru.json';
+import ru from './locales/ru.json';
 import de from './locales/de.json';
+import es from './locales/es.json';
 
 addMessages('en', en);
-// addMessages('ru', ru);
+addMessages('ru', ru);
 addMessages('de', de);
+addMessages('es', es);
 
 init({
   fallbackLocale: 'en',

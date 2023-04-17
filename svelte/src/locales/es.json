@@ -1,0 +1,14 @@
+{
+    "name": "Probador de contraseñas",
+    "time_taken": "Toma <b>{scoreNum} {scoreText, select, lessthanasecond {menos de un segundo} month{mes} months{meses} second{segundo} seconds{segundos} minute{minuto} minutes{minutos} hour{hora} hours{horas} day{día} days{días} year{año} years{años} centuries{siglos} other {{scoreText}}}</b> para descifrar su contraseña. {asterisk}",
+    "less_than_app_open_extra": "(es más corto que el tiempo que la aplicación está abierta)",
+    "hps_note": "Esto es para un escenario fuera de línea de lo contrario desprotegido, donde un hacker intentaría {hps} contraseñas por segundo en una PC de consumo normal.",
+    "tries_note": "Su contraseña sería {harderScore, select, 0 {increíblemente mala} 1 {mala} 2 {aceptable} 3 {segura} 4 {absolutamente segura} 5 {absurdamente segura}}. Un hacker {harderScore, select, 0 {se reiría} 1 {podría adivinar} 2 {necesitaría} 3 {se sorprendería} 4 {no tendría casi ninguna posibilidad} 5 {ni siquiera intentaría}} promedio <span id=''tries''>{tries}</span> intentos {harderScore, select, 0{} 1{para adivinarlo} 2{} 3{} 4{} 5{} other {para intentar adivinarlo}}.",
+    "real_world": {
+        "note_prefix": "En un escenario más realista, como en servicios en línea, esta contraseña sería {still, select, 1 {todavía} other {}}",
+        "score": "{score, select, 0 {increíblemente mala} 1 {mala} 2 {aceptable} 3 {segura} 4 {absolutamente segura} 5 {totalmente segura}}",
+        "glue": "y tardaría",
+        "time": "{scoreNum} {scoreText, select, lessthanasecond {menos de un segundo} month{mes} months{meses} second{segundo} seconds{segundos} minute{minuto} minutes{minutos} hour{hora} hours{horas} day{día} days{días} year{año} years{años} centuries{siglos} other {{scoreText}}}",
+        "suffix": "para descifrarla."
+    }
+}
