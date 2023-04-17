@@ -5,7 +5,7 @@
 
   // import MediaQuery from "./MediaQuery.svelte";
 
-  import { security, harderScore, color_easy } from "./pw_store";
+  import { security, harderScore, color_easy, convertScoreToFormat } from "./pw_store";
 </script>
 
 <!-- <MediaQuery query="((min-height: 30em) and (min-width: 20em)) or (min-width: 750px)" let:matches> -->
@@ -35,7 +35,10 @@
   >
   {$_("real_world.glue")}
   <span id="securityText" style="color: #{$color_easy}"
-    >{$security.crack_times_display.online_no_throttling_10_per_second.toUpperCase()}</span
+    >
+    {$_("real_world.time", {values:convertScoreToFormat($security.crack_times_display.online_no_throttling_10_per_second)})}
+    <!-- {$security.crack_times_display.online_no_throttling_10_per_second.toUpperCase()} -->
+    </span
   > {$_("real_world.suffix")}
 </div>
 

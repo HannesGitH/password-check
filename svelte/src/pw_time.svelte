@@ -1,13 +1,13 @@
 <script lang="ts">
   import { _ } from "svelte-i18n";
-  import { security } from "./pw_store";
+  import { security, convertScoreToFormat } from "./pw_store";
   export let withAsterisk: Boolean = false;
 </script>
 
 <p>
   {@html $_("time_taken", {
     values: {
-      time: $security.crack_times_display.offline_fast_hashing_1e10_per_second,
+      ...convertScoreToFormat($security.crack_times_display.offline_fast_hashing_1e10_per_second),
       asterisk: withAsterisk ? "*" : "",
     },
   })}
