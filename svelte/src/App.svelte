@@ -19,6 +19,7 @@
 
   let isGlobal: boolean = false;
   $: isGlobal ? locale.set(getLocaleFromNavigator()) : locale.set("en");
+  let supportedLocales = ["en", "es", "de", "ru"];
 
   $: _extraheight = screenWidth > 740 ? 100 : 0;
   $: showHeadline = screenHeight > 250 + _extraheight;
@@ -30,7 +31,7 @@
 
 <svelte:window bind:innerWidth={screenWidth} bind:innerHeight={screenHeight} />
 
-{#if !getLocaleFromNavigator().startsWith("en")}
+{#if !getLocaleFromNavigator().startsWith("en") && supportedLocales.some((l) => getLocaleFromNavigator().startsWith(l))}
   <LocaleEnable bind:isGlobal />
 {/if}
 
