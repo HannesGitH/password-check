@@ -46,8 +46,8 @@ android {
         applicationId twaManifest.applicationId
         minSdkVersion 16
         targetSdkVersion 33
-        versionCode 6
-        versionName "2.1.1"
+        versionCode 7
+        versionName "2.1.7"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
         // The name for the application on the Android Launcher
