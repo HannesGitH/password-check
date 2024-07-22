@@ -52,8 +52,8 @@ android {
         applicationId twaManifest.applicationId
         minSdkVersion 16
         targetSdkVersion 35
-        versionCode 7
-        versionName "2.1.7"
+        versionCode 8
+        versionName "2.1.8"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
         // The name for the application on the Android Launcher
@@ -143,6 +143,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.3.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
 }
