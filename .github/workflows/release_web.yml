@@ -6,7 +6,7 @@ on:
       - release
       - 'releases/**'
 
-name: Release
+name: Release Web
 
 env:
   working-directory: ./svelte

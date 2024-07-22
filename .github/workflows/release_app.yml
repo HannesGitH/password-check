@@ -23,6 +23,11 @@ jobs:
         distribution: 'zulu' # See 'Supported distributions' for available options
         java-version: '17'
         cache: 'gradle'
+    - name: create key.properties for signing
+      run: |
+        cd ${{ env.working-directory }}
+        touch key.properties
+        printf "${{ secrets.KEY_PROPERTIES }}" >> key.properties
     - name: Build gradlw
       run: |
         cd ${{ env.working-directory }}
