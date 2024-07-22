@@ -47,6 +47,7 @@ if (keystorePropertiesFile.exists()) {
 }
  
 android {
+    namespace twaManifest.applicationId
     compileSdkVersion 35
     defaultConfig {
         applicationId twaManifest.applicationId
