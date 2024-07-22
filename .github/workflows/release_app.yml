@@ -1,0 +1,76 @@
+on:
+  push:
+    branches:
+      - main
+      - release
+      - 'releases/**'
+    paths:
+      - 'TWA/**'
+
+name: Release APK
+
+env:
+  working-directory: ./TWA
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set Up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu' # See 'Supported distributions' for available options
+        java-version: '17'
+        cache: 'gradle'
+    - name: Build gradlw
+      run: |
+        cd ${{ env.working-directory }}
+        ./gradlew build
+    - name: Build APK
+      run: |
+        cd ${{ env.working-directory }}
+        ./gradlew assembleRelease
+    - name: build AAB
+      run: |
+        cd ${{ env.working-directory }}
+        ./gradlew app:bundleRelease
+    - name: upload apk artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: password_twa.apk
+        path: ${{ env.working-directory}}/app/build/outputs/apk/release
+    - name: upload aab artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: password_twa.aab
+        path: ${{ env.working-directory}}/app/build/outputs/bundle/release
+
+  release-playstore:
+    if: github.ref_name == 'release'
+    needs: build
+    name: Release to the google playstore
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # need release notes
+      - name: download aab
+        uses: actions/download-artifact@v2
+        with:
+          name: password_twa.aab
+      - name: create release notes #TODO make this actual notes
+        run: |
+          mkdir news
+          touch news/whatsnew-en-US
+          touch news/whatsnew-de-DE
+          echo "automatic update" >> news/whatsnew-en-US 
+          echo "automatisches Update" >> news/whatsnew-de-DE
+      - name: upload aab
+        uses: r0adkll/upload-google-play@v1.0.15
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          packageName: hannepps.tools.passwordchecker
+          releaseFiles: app-release.aab
+          track: beta #TODO: when stable move to production
+          inAppUpdatePriority: 2
+          whatsNewDirectory: news
+            
