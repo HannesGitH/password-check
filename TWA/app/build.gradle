@@ -39,7 +39,7 @@ def twaManifest = [
     // The duration of fade out animation in milliseconds to be played when removing splash screen.
     splashScreenFadeOutDuration: 300
 ]
-
+ 
 android {
     compileSdkVersion 34
     defaultConfig {

@@ -47,7 +47,6 @@ jobs:
         path: ${{ env.working-directory}}/app/build/outputs/bundle/release
 
   release-playstore:
-    if: github.ref_name == 'release'
     needs: build
     name: Release to the google playstore
     runs-on: ubuntu-latest
