@@ -48,13 +48,13 @@ if (keystorePropertiesFile.exists()) {
  
 android {
     namespace twaManifest.applicationId
-    compileSdkVersion 34
+    compileSdkVersion 35
     defaultConfig {
         applicationId twaManifest.applicationId
         minSdkVersion 21
-        targetSdkVersion 34
-        versionCode 8
-        versionName "2.1.8"
+        targetSdkVersion 35
+        versionCode 9
+        versionName "2.1.9"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
         // The name for the application on the Android Launcher
